@@ -39,6 +39,6 @@ const User = ({ user, status, ...rest }) => {
 };
 User.propTypes = {
     user: PropTypes.object.isRequired,
-    status: PropTypes.bool.isRequired
+    status: PropTypes.bool
 };
 export default User;
