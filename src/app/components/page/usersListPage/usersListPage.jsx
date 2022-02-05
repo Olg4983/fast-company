@@ -1,19 +1,19 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import { paginate } from "../api/utils/paginate";
-import Pagination from "./pagination";
-import api from "../api";
+import { paginate } from "../../../utils/paginate";
+import Pagination from "../../common/pagination";
+import api from "../../../api";
 import PropTypes from "prop-types";
-import GroupList from "./groupList";
-import SearchStatus from "./searchStatus";
-import UsersTable from "./usersTable";
-import UserPage from "./userPage";
+import GroupList from "../../common/groupList";
+import SearchStatus from "../../ui/searchStatus";
+import UsersTable from "../../ui/usersTable";
+import UserPage from "../userPage/userPage";
 import _ from "lodash";
 import { useParams } from "react-router-dom";
 
-import TextField from "./textField";
+import TextField from "../../common/form/textField";
 
-const Users = () => {
+const UsersListPage = () => {
     const pageSize = 8;
     const params = useParams();
     const { userId } = params;
@@ -81,7 +81,7 @@ const Users = () => {
             console.log(filtredUsers);
         } else if (search) {
             filtredUsers = users.filter((user) =>
-                user.name.toLowerCase().includes(search.trim())
+                user.name.toLowerCase().includes(search.toLowerCase().trim())
             );
         } else filtredUsers = users;
 
@@ -152,7 +152,7 @@ const Users = () => {
     }
     return "loading...";
 };
-Users.propTypes = {
+UsersListPage.propTypes = {
     users: PropTypes.array.isRequired
 };
-export default Users;
+export default UsersListPage;
